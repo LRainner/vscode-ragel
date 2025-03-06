@@ -1,0 +1,52 @@
+{
+  "Machine Definition": {
+    "prefix": "machine",
+    "body": [
+      "machine ${1:name};",
+      "",
+      "%%{",
+      "\t${0}",
+      "}%%"
+    ],
+    "description": "创建一个新的 Ragel 状态机"
+  },
+  "Action Definition": {
+    "prefix": "action",
+    "body": [
+      "action ${1:name} {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "定义一个 Ragel 动作"
+  },
+  "State Definition": {
+    "prefix": "state",
+    "body": [
+      "${1:name} = (",
+      "\t${0}",
+      ");"
+    ],
+    "description": "定义一个 Ragel 状态"
+  },
+  "Main Machine": {
+    "prefix": "main",
+    "body": [
+      "main := ${0};"
+    ],
+    "description": "定义主状态机"
+  },
+  "Write Statement": {
+    "prefix": "write",
+    "body": [
+      "write ${1:data};"
+    ],
+    "description": "写入数据语句"
+  },
+  "Include Statement": {
+    "prefix": "include",
+    "body": [
+      "include ${1:file};"
+    ],
+    "description": "包含文件语句"
+  }
+} 
