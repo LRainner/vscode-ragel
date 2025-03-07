@@ -1,20 +1,22 @@
 {
   "name": "vscode-ragel",
   "displayName": "Ragel Language Support",
-  "description": "完整的 Ragel 语言支持，包括语法高亮、代码提示和跳转功能",
+  "description": "Ragel 语言支持，提供跳转功能",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.60.0"
   },
   "categories": [
     "Programming Languages",
-    "Snippets",
-    "Linters"
+    "Snippets"
   ],
   "activationEvents": [
     "onLanguage:ragel"
   ],
   "main": "./out/extension.js",
+  "extensionDependencies": [
+    "ms-vscode.cpptools"
+  ],
   "contributes": {
     "languages": [
       {
@@ -27,13 +29,6 @@
           ".rl"
         ],
         "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "ragel",
-        "scopeName": "source.ragel",
-        "path": "./syntaxes/ragel.tmLanguage.json"
       }
     ],
     "snippets": [

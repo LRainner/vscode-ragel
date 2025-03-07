@@ -1,6 +1,6 @@
 # Ragel Language Support for VSCode
 
-> **注意：** 此 VSCode 扩展提供了 Ragel 状态机编译器语言的完整支持。
+> **注意：** 此 VSCode 扩展提供了 Ragel 状态机编译器语言的跳转支持。
 
 [English](#english) | [中文](#中文)
 
@@ -12,29 +12,18 @@
 
 ### Features
 
-This extension provides comprehensive support for the Ragel State Machine Compiler language in Visual Studio Code:
-
-#### Language Support
-- **Mixed Language Support**: Intelligent recognition and support for both Ragel and host language (C/C++)
-- **Syntax Highlighting**: 
-  - Accurate colorization for Ragel code blocks (`%%{...}%%`)
-  - Proper highlighting for host language code (C/C++)
-  - Special highlighting for Ragel directives (`%% write`)
+This extension provides navigation support for the Ragel State Machine Compiler language in Visual Studio Code:
 
 #### Smart Navigation
 - **Go to Definition**: 
-  - Jump to Ragel machine, action, and state definitions
-  - Support C/C++ header files and function definitions in non-Ragel sections
+  - Jump to Ragel machine, action, and state definitions within Ragel blocks
+  - Delegates to C/C++ extension for navigation in host language sections
 - **Document Outline**: View the structure of your Ragel files including machines, actions, and states
 
 #### Code Intelligence
 - **Context-Aware Hover Information**: 
   - Ragel keywords and operators documentation in Ragel blocks
-  - Standard C/C++ hover information in host language sections
-- **Smart Code Completion**: 
-  - Ragel keywords, operators, and built-in actions
-  - Custom action suggestions with @ prefix
-  - Standard C/C++ completions in host language sections
+  - Preserves standard C/C++ hover information in host language sections
 
 #### Editor Features
 - **Code Snippets**: Quick templates for common Ragel patterns
@@ -47,22 +36,25 @@ This extension provides comprehensive support for the Ragel State Machine Compil
 2. In VSCode, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`)
 3. Type "Extensions: Install from VSIX" and select the downloaded file
 
+### Requirements
+
+- **C/C++ Extension**: For navigation support in C/C++ code sections, install the Microsoft C/C++ extension
+
 ### Usage
 
 Simply open any `.rl` file to activate the extension. The extension will automatically:
-- Detect and highlight Ragel code blocks and host language sections
-- Provide context-aware features based on cursor position
+- Detect Ragel code blocks and provide Ragel-specific navigation
+- Let VSCode handle syntax highlighting and other language features
 
 Key features:
-- `Ctrl+Space`: Trigger context-aware code completion
 - `Ctrl+Click` or `F12`: Jump to definitions (works for both Ragel and C/C++)
-- Hover: View documentation for Ragel elements or C/C++ symbols
+- Hover: View documentation for Ragel elements
 - `Ctrl+Shift+O`: Open document outline
 
 ### Example
 
 ```ragel
-#include <stdio.h>  // C code with proper highlighting
+#include <stdio.h>  // C code handled by C/C++ extension
 
 %%{
     machine example;
@@ -76,7 +68,7 @@ Key features:
 
 %% write data;  // Ragel directive
 
-int main() {    // C code with proper highlighting
+int main() {    // C code handled by C/C++ extension
     // ...
 }
 ```
@@ -89,29 +81,18 @@ int main() {    // C code with proper highlighting
 
 ### 功能
 
-此扩展为 Visual Studio Code 提供全面的 Ragel 状态机编译器语言支持：
-
-#### 语言支持
-- **混合语言支持**：智能识别并支持 Ragel 和宿主语言（C/C++）
-- **语法高亮**：
-  - 准确着色 Ragel 代码块（`%%{...}%%`）
-  - 正确高亮宿主语言代码（C/C++）
-  - 特殊高亮 Ragel 指令（`%% write`）
+此扩展为 Visual Studio Code 提供 Ragel 状态机编译器语言的跳转支持：
 
 #### 智能导航
 - **跳转到定义**：
-  - 跳转到 Ragel 机器、动作和状态定义
-  - 支持非 Ragel 部分的 C/C++ 头文件和函数定义
+  - 在 Ragel 块内跳转到 Ragel 机器、动作和状态定义
+  - 在宿主语言部分委托给 C/C++ 扩展进行导航
 - **文档大纲**：查看包含机器、动作和状态的文件结构
 
 #### 代码智能
 - **上下文感知悬停信息**：
   - Ragel 块中显示 Ragel 关键字和操作符文档
-  - 宿主语言部分显示标准 C/C++ 悬停信息
-- **智能代码补全**：
-  - Ragel 关键字、操作符和内置动作
-  - 带 @ 前缀的自定义动作建议
-  - 宿主语言部分的标准 C/C++ 补全
+  - 保留宿主语言部分的标准 C/C++ 悬停信息
 
 #### 编辑器功能
 - **代码片段**：常用 Ragel 模式的快速模板
@@ -124,22 +105,25 @@ int main() {    // C code with proper highlighting
 2. 在 VSCode 中，打开命令面板（`Ctrl+Shift+P` 或 `Cmd+Shift+P`）
 3. 输入 "Extensions: Install from VSIX" 并选择下载的文件
 
+### 要求
+
+- **C/C++ 扩展**：为了支持 C/C++ 代码部分的跳转，请安装 Microsoft C/C++ 扩展
+
 ### 使用方法
 
 只需打开任何 `.rl` 文件即可激活扩展。扩展会自动：
-- 检测并高亮 Ragel 代码块和宿主语言部分
-- 根据光标位置提供上下文相关功能
+- 检测 Ragel 代码块并提供 Ragel 特定的跳转功能
+- 让 VSCode 处理语法高亮和其他语言功能
 
 主要功能：
-- `Ctrl+Space`：触发上下文感知的代码补全
 - `Ctrl+点击` 或 `F12`：跳转到定义（适用于 Ragel 和 C/C++）
-- 悬停：查看 Ragel 元素或 C/C++ 符号的文档
+- 悬停：查看 Ragel 元素的文档
 - `Ctrl+Shift+O`：打开文档大纲
 
 ### 示例
 
 ```ragel
-#include <stdio.h>  // C 代码，具有正确的高亮
+#include <stdio.h>  // C 代码由 C/C++ 扩展处理
 
 %%{
     machine example;
@@ -153,7 +137,7 @@ int main() {    // C code with proper highlighting
 
 %% write data;  // Ragel 指令
 
-int main() {    // C 代码，具有正确的高亮
+int main() {    // C 代码由 C/C++ 扩展处理
     // ...
 }
 ```
