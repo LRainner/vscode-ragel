@@ -15,7 +15,8 @@
   ],
   "main": "./out/extension.js",
   "extensionDependencies": [
-    "ms-vscode.cpptools"
+    "ms-vscode.cpptools",
+    "llvm-vs-code-extensions.vscode-clangd"
   ],
   "contributes": {
     "languages": [

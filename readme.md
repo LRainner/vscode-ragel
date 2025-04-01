@@ -17,7 +17,7 @@ This extension provides navigation support for the Ragel State Machine Compiler 
 #### Smart Navigation
 - **Go to Definition**: 
   - Jump to Ragel machine, action, and state definitions within Ragel blocks
-  - Delegates to C/C++ extension for navigation in host language sections
+  - Delegates to C/C++ or Clangd extension for navigation in host language sections
 - **Document Outline**: View the structure of your Ragel files including machines, actions, and states
 
 #### Code Intelligence
@@ -38,13 +38,16 @@ This extension provides navigation support for the Ragel State Machine Compiler 
 
 ### Requirements
 
-- **C/C++ Extension**: For navigation support in C/C++ code sections, install the Microsoft C/C++ extension
+- **C/C++ Extension or Clangd**: For navigation support in C/C++ code sections, install either:
+  - Microsoft C/C++ extension (`ms-vscode.cpptools`)
+  - Clangd extension (`llvm-vs-code-extensions.vscode-clangd`)
 
 ### Usage
 
 Simply open any `.rl` file to activate the extension. The extension will automatically:
 - Detect Ragel code blocks and provide Ragel-specific navigation
 - Let VSCode handle syntax highlighting and other language features
+- Use C/C++ or Clangd extension for host language navigation
 
 Key features:
 - `Ctrl+Click` or `F12`: Jump to definitions (works for both Ragel and C/C++)
@@ -54,7 +57,7 @@ Key features:
 ### Example
 
 ```ragel
-#include <stdio.h>  // C code handled by C/C++ extension
+#include <stdio.h>  // C code handled by C/C++ or Clangd extension
 
 %%{
     machine example;
@@ -68,7 +71,7 @@ Key features:
 
 %% write data;  // Ragel directive
 
-int main() {    // C code handled by C/C++ extension
+int main() {    // C code handled by C/C++ or Clangd extension
     // ...
 }
 ```
@@ -86,7 +89,7 @@ int main() {    // C code handled by C/C++ extension
 #### 智能导航
 - **跳转到定义**：
   - 在 Ragel 块内跳转到 Ragel 机器、动作和状态定义
-  - 在宿主语言部分委托给 C/C++ 扩展进行导航
+  - 在宿主语言部分委托给 C/C++ 或 Clangd 扩展进行导航
 - **文档大纲**：查看包含机器、动作和状态的文件结构
 
 #### 代码智能
@@ -107,13 +110,16 @@ int main() {    // C code handled by C/C++ extension
 
 ### 要求
 
-- **C/C++ 扩展**：为了支持 C/C++ 代码部分的跳转，请安装 Microsoft C/C++ 扩展
+- **C/C++ 扩展或 Clangd**：为了支持 C/C++ 代码部分的跳转，请安装以下任一扩展：
+  - Microsoft C/C++ 扩展 (`ms-vscode.cpptools`)
+  - Clangd 扩展 (`llvm-vs-code-extensions.vscode-clangd`)
 
 ### 使用方法
 
 只需打开任何 `.rl` 文件即可激活扩展。扩展会自动：
 - 检测 Ragel 代码块并提供 Ragel 特定的跳转功能
 - 让 VSCode 处理语法高亮和其他语言功能
+- 使用 C/C++ 或 Clangd 扩展处理宿主语言导航
 
 主要功能：
 - `Ctrl+点击` 或 `F12`：跳转到定义（适用于 Ragel 和 C/C++）
@@ -123,7 +129,7 @@ int main() {    // C code handled by C/C++ extension
 ### 示例
 
 ```ragel
-#include <stdio.h>  // C 代码由 C/C++ 扩展处理
+#include <stdio.h>  // C 代码由 C/C++ 或 Clangd 扩展处理
 
 %%{
     machine example;
@@ -137,7 +143,7 @@ int main() {    // C code handled by C/C++ extension
 
 %% write data;  // Ragel 指令
 
-int main() {    // C 代码由 C/C++ 扩展处理
+int main() {    // C 代码由 C/C++ 或 Clangd 扩展处理
     // ...
 }
 ```
